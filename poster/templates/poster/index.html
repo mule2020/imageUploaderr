@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <title>Iamge uploader</title>
+    <style>
+      *, center {
+        box-sizing: border-box;
+        margin: 40px;
+        background-color: darkgrey;
+      }
+    </style>
+  </head>
+  <body>
+   
+    <div class="container">
+        <center><h2>Image Uploader Example</h2></center>
+        <div class="row">
+            <div class="col-md-8 col-md-10 mx-auto">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %} {{ form.as_p }}
+
+                    <br>
+                    <button type="submit" class="btn btn-primary center">Upload</button>
+                  </form
+            </div>
+        </div>
+    </div>
+    
+
+    {% if img_obj %}
+    <h3>You have inputted : {{img_obj.title}}</h3>
+    <img src="{{ img_obj.image.url}}" alt="connect" style="max-height: 300px" />
+    {% endif %}
+  </body>
+</html>
